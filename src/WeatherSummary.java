@@ -1,6 +1,6 @@
 public class WeatherSummary {
     /**
-     * Reads newline-delimted temperatures from System.in and prints summary
+     * Reads newline-delimited temperatures from System.in and prints summary
      * statistics to System.out.
      * 
      * Example input:
