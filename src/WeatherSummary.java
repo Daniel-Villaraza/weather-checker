@@ -30,9 +30,9 @@ public class WeatherSummary {
     
     public static void readTempsFromFile() {
         final String TEMPS_FILE = "temps";
+        double[] tempsLastThirtyDays = new double[30];
     
         try (Scanner scanner = new Scanner(new FileInputStream(new File(TEMPS_FILE)))) {
-            double[] tempsLastThirtyDays = new double[30];
             int idx = 0;
     
             while (scanner.hasNextDouble()) {
@@ -44,5 +44,32 @@ public class WeatherSummary {
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
+
+        calculateMax(tempsLastThirtyDays);
+        calculateMin(tempsLastThirtyDays);
+    }
+
+    public static void calculateMax(double[] temps) {
+        double max = temps[0];
+
+        for (int i = 0; i < temps.length; i++) {
+            if (max < temps[i]) {
+                max = temps[i];
+            }
+        }
+
+        System.out.println("Max: " + max);
+    }
+
+    public static void calculateMin(double[] temps) {
+        double min = temps[0];
+
+        for (int i = 0; i < temps.length; i++) {
+            if (min > temps[i]) {
+                min = temps[i];
+            }
+        }
+
+        System.out.println("Min: " + min);
     }
 }
