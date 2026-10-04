@@ -23,7 +23,6 @@ public class WeatherSummary {
     public static void main(String[] args) {
         // Implement this method!
         // Hint: use Scanner. nextDouble() and hasNextDouble() will be helpful here!
-        // Scanner scanner = new Scanner(System.in);
 
         final String TEMPS_FILE = "temps";
 
