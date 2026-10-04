@@ -39,14 +39,13 @@ public class WeatherSummary {
                 tempsLastThirtyDays[idx] = scanner.nextDouble();
                 idx++;
             }
-    
-            System.out.println(Arrays.toString(tempsLastThirtyDays));
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
 
         calculateMax(tempsLastThirtyDays);
         calculateMin(tempsLastThirtyDays);
+        calculateAvg(tempsLastThirtyDays);
     }
 
     public static void calculateMax(double[] temps) {
@@ -71,5 +70,18 @@ public class WeatherSummary {
         }
 
         System.out.println("Min: " + min);
+    }
+
+    public static void calculateAvg(double[] temps) {
+        double sum = 0.0;
+        double avg = 0.0;
+
+        for (int i = 0; i < temps.length; i++) {
+            sum += temps[i];
+        }
+
+        avg = sum / temps.length;
+
+        System.out.println("Average: " + avg);
     }
 }
