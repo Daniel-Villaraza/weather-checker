@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class WeatherSummary {
@@ -24,12 +25,22 @@ public class WeatherSummary {
         // Implement this method!
         // Hint: use Scanner. nextDouble() and hasNextDouble() will be helpful here!
 
+        readTempsFromFile();
+    }
+    
+    public static void readTempsFromFile() {
         final String TEMPS_FILE = "temps";
-
+    
         try (Scanner scanner = new Scanner(new FileInputStream(new File(TEMPS_FILE)))) {
+            double[] tempsLastThirtyDays = new double[30];
+            int idx = 0;
+    
             while (scanner.hasNextDouble()) {
-                System.out.println(scanner.nextLine());
+                tempsLastThirtyDays[idx] = scanner.nextDouble();
+                idx++;
             }
+    
+            System.out.println(Arrays.toString(tempsLastThirtyDays));
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
